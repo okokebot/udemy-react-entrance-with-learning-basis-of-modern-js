@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import './style.css';
+import {InputTodo} from './components/InputTodo'
 
 function App() {
   const [todoText, setTodoText] = useState('');
-  const [incompleteTodos, setIncompleteTodos] = useState(['aaaaaa', 'iiiiii']);
-  const [completeTodos, setCompleteTodos] = useState(['eeeeee']);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
 
   // input area に変更があった場合は、その値を書き換える
   // value={todoText} としているため、これがないと常に初期値である '' が代入され、フォームに入力できない
@@ -43,10 +44,7 @@ function App() {
 
   return (
     <>
-      <div className="input-area">
-        <input placeholder="ToDO を入力" value={todoText} onChange={onChangeTodoText} />
-        <button onClick={ onClickAdd }>追加</button>
-      </div>
+      <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd} />
       <div className="incomplete-area">
         <p className="title">未完了のToDO</p>
         <ul>
